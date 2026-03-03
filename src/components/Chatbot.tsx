@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import logo from "@/assets/logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
@@ -160,7 +161,7 @@ const Chatbot = () => {
             {/* Header */}
             <div className="bg-gradient-sunset p-4 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2 text-primary-foreground">
-                <Sparkles className="w-5 h-5" />
+                <img src={logo} alt="Parr-Desi" className="w-6 h-6 object-contain" />
                 <span className="font-display font-bold">Parr-Desi AI</span>
               </div>
               <button onClick={() => setOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground">
