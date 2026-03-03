@@ -25,20 +25,19 @@ export default {
   				'sans-serif'
   			],
   			sans: [
-  				'Montserrat',
+  				'Roboto',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
   				'BlinkMacSystemFont',
   				'Segoe UI',
-  				'Roboto',
   				'Helvetica Neue',
   				'Arial',
   				'Noto Sans',
   				'sans-serif'
   			],
   			serif: [
-  				'Cormorant Garamond',
+  				'Libre Caslon Text',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
@@ -47,7 +46,7 @@ export default {
   				'serif'
   			],
   			mono: [
-  				'IBM Plex Mono',
+  				'Roboto Mono',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',
@@ -172,7 +171,7 @@ export default {
   					transform: 'translateY(0)'
   				}
   			},
-  			'ticker': {
+  			ticker: {
   				'0%': {
   					transform: 'translateX(0)'
   				},
@@ -180,7 +179,7 @@ export default {
   					transform: 'translateX(-50%)'
   				}
   			},
-  			'float': {
+  			float: {
   				'0%, 100%': {
   					transform: 'translateY(0)'
   				},
@@ -196,8 +195,8 @@ export default {
   			'fade-in': 'fade-in 0.5s ease-out forwards',
   			'slide-in-right': 'slide-in-right 0.5s ease-out',
   			'count-up': 'count-up 0.8s ease-out',
-  			'ticker': 'ticker 30s linear infinite',
-  			'float': 'float 3s ease-in-out infinite'
+  			ticker: 'ticker 30s linear infinite',
+  			float: 'float 3s ease-in-out infinite'
   		},
   		boxShadow: {
   			'2xs': 'var(--shadow-2xs)',
