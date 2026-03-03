@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary/90 backdrop-blur-md border-b border-secondary-foreground/10">
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          <Compass className="w-7 h-7 text-primary" />
+          <img src={logo} alt="Parr-Desi" className="w-8 h-8 object-contain" />
           <span className="font-display text-xl font-bold text-secondary-foreground tracking-tight">
             Parr-Desi
           </span>
