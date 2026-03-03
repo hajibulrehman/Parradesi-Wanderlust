@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import DepartureTicker from "./DepartureTicker";
+import Chatbot from "./Chatbot";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -10,6 +11,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <DepartureTicker />
       <main className="flex-1 pt-16">{children}</main>
       <Footer />
+      <Chatbot />
     </div>
   );
 };
