@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { trips } from "@/data/trips";
+import { usePackages, PackageData } from "@/hooks/usePackages";
 import TripCard from "@/components/TripCard";
 import { Search } from "lucide-react";
 
 const types = ["All", "Adventure", "Relaxation", "Backpacking", "International"] as const;
 
 const Trips = () => {
+  const { packages, loading } = usePackages();
   const [filter, setFilter] = useState<string>("All");
   const [search, setSearch] = useState("");
 
-  const filtered = trips.filter((t) => {
+  const filtered = packages.filter((t) => {
     const matchType = filter === "All" || t.type === filter;
     const matchSearch = t.name.toLowerCase().includes(search.toLowerCase()) || t.destination.toLowerCase().includes(search.toLowerCase());
     return matchType && matchSearch;
@@ -18,7 +19,6 @@ const Trips = () => {
 
   return (
     <>
-      {/* Hero */}
       <section className="pt-12 pb-8 bg-secondary">
         <div className="container text-center">
           <motion.h1
@@ -32,7 +32,6 @@ const Trips = () => {
             Find your next adventure. Filter by type, search by destination — your perfect trip is waiting.
           </p>
 
-          {/* Search */}
           <div className="max-w-md mx-auto relative mb-6">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <input
@@ -44,7 +43,6 @@ const Trips = () => {
             />
           </div>
 
-          {/* Filters */}
           <div className="flex flex-wrap justify-center gap-2">
             {types.map((type) => (
               <button
@@ -63,10 +61,11 @@ const Trips = () => {
         </div>
       </section>
 
-      {/* Grid */}
       <section className="py-12 bg-background">
         <div className="container">
-          {filtered.length === 0 ? (
+          {loading ? (
+            <p className="text-center text-muted-foreground py-12">Loading trips...</p>
+          ) : filtered.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">No trips found. Try a different filter!</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

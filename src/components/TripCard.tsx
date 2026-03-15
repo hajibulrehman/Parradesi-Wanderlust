@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import type { Trip } from "@/data/trips";
-import { tripImages } from "@/lib/images";
+import type { PackageData } from "@/hooks/usePackages";
 
-const TripCard = ({ trip, index = 0 }: { trip: Trip; index?: number }) => {
+const TripCard = ({ trip, index = 0 }: { trip: PackageData; index?: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -12,14 +11,20 @@ const TripCard = ({ trip, index = 0 }: { trip: Trip; index?: number }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
     >
-      <Link to={`/trips/${trip.id}`} className="group block">
+      <Link to={`/trips/${trip.slug}`} className="group block">
         <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-warm transition-all duration-300 hover:-translate-y-1">
           <div className="relative h-52 overflow-hidden">
-            <img
-              src={tripImages[trip.image]}
-              alt={trip.name}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
+            {trip.image_url ? (
+              <img
+                src={trip.image_url}
+                alt={trip.name}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            ) : (
+              <div className="w-full h-full bg-muted flex items-center justify-center">
+                <MapPin className="w-8 h-8 text-muted-foreground" />
+              </div>
+            )}
             <div className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
               {trip.type}
             </div>
@@ -30,10 +35,10 @@ const TripCard = ({ trip, index = 0 }: { trip: Trip; index?: number }) => {
             <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{trip.description}</p>
             <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
               <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{trip.destination}</span>
-              <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{trip.duration}</span>
+              {trip.duration && <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{trip.duration}</span>}
             </div>
             <div className="flex items-center justify-between">
-              <span className="font-display font-bold text-lg text-primary">₹{trip.price.toLocaleString()}</span>
+              <span className="font-display font-bold text-lg text-primary">₹{Number(trip.price).toLocaleString()}</span>
               <span className="flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
                 View Details <ArrowRight className="w-4 h-4" />
               </span>
