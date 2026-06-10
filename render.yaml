@@ -2,7 +2,7 @@ services:
   - type: web
     name: parradesi-wanderlust-proto
     runtime: static
-    buildCommand: npm install && npm run build
+    buildCommand: bash render-build.sh
     staticPublishPath: ./dist
     routes:
       - type: rewrite
