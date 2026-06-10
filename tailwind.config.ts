@@ -15,12 +15,12 @@ export default {
   	extend: {
   		fontFamily: {
   			display: [
-  				'Space Grotesk"',
+  				'Space Grotesk',
   				'system-ui',
   				'sans-serif'
   			],
   			body: [
-  				'DM Sans"',
+  				'DM Sans',
   				'system-ui',
   				'sans-serif'
   			],

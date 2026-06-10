@@ -1,0 +1,62 @@
+To run this project locally, you only need a few terminal commands.
+
+Prerequisites
+You need Node.js and npm installed. Check with:
+
+node --version
+npm --version
+If those work, you’re good to go.
+
+Steps to run the project
+
+1. Go to the project folder
+   cd "c:\Users\hajib\OneDrive\Desktop\pardesi\parra-desi-wanderlust"
+2. Install dependencies (first time only)
+   npm install
+   (or the shorter npm i)
+
+This reads package.json and installs everything into node_modules. You only need this when:
+
+You just cloned the repo
+node_modules is missing
+Dependencies changed in package.json
+In your case, node_modules was already there, so I skipped this step.
+
+3. Start the dev server
+   npm run dev
+   That runs the "dev": "vite" script from package.json, which starts the Vite development server.
+
+You should see something like:
+
+VITE v5.4.19 ready in 5649 ms
+➜ Local: http://localhost:8080/
+Open http://localhost:8080/ in your browser.
+
+4. Stop the server
+   In the terminal where it’s running, press:
+
+Ctrl + C
+What each command does
+Command Purpose
+cd ...
+Move into the project directory
+npm install
+Download and install packages
+npm run dev
+Start the app in development mode with hot reload
+npm run build
+Create a production build (not needed just to run locally)
+npm run preview
+Preview the production build locally
+Environment variables
+This project uses Supabase, so make sure you have a .env file in the project root with the required variables (things like VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY). Vite loads those automatically when the dev server starts.
+
+Full flow from scratch
+If you were setting this up on a new machine, the full sequence would be:
+
+cd "c:\Users\hajib\OneDrive\Desktop\pardesi\parra-desi-wanderlust"
+npm install
+npm run dev
+Then open http://localhost:8080/.
+
+That’s all I did — no database setup or extra build steps were needed for local development.
