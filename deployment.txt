@@ -1,0 +1,29 @@
+Deploy steps
+1. Set environment variables on your host
+In Vercel/Netlify (or your host’s env settings), add:
+
+VITE_SUPABASE_PROJECT_ID=...
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_PUBLISHABLE_KEY=...
+Use the values from your Supabase dashboard → Project Settings → API.
+
+2. Deploy
+Vercel (recommended — config is already in the repo):
+
+npx vercel --prod
+Netlify:
+
+npx netlify deploy --prod --dir=dist
+Any static host: run npm run build and upload the dist/ folder. Ensure all routes fall back to index.html.
+
+3. Preview locally before deploying
+npm run build
+npm run preview
+Important security note
+Your .env file is currently tracked in git with real Supabase keys. You should:
+
+Remove it from git history: git rm --cached .env
+Consider rotating your Supabase anon key in the dashboard if this repo was ever public
+Also review your Supabase edge functions (chat, admin-register) — they currently have verify_jwt = false, which you may want to tighten for production.
+
+If you tell me your preferred host (Vercel, Netlify, or something else), I can walk you through the exact deploy commands for that platform.
